@@ -29,6 +29,8 @@ This project is designed for the production of the paper titled Contextual adapt
 - `ExtendedDataFig10/` - Data and code for Extended Data Figure 10
 - `ExtendedDataFig13/` - Data and code for Extended Data Figure 13
 
+All data are provided as ZIP archives. **Please unzip the corresponding data archive into the same directory before running the plotting code.**
+
 ## Empirical Data
 - `EmpiricalNetwork_edgelist/` - Edge lists of four empirical social networks analyzed in the study
 
