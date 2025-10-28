@@ -1,0 +1,9 @@
+mutation_rate:0.001
+bc critical positive infinite:4.037431822586466
+bc critical negative infinite:6.641591425802564
+mutation_rate:0.01
+bc critical positive infinite:4.102690437214584
+bc critical negative infinite:6.757385038946535
+mutation_rate:0.1
+bc critical positive infinite:4.8010253001307115
+bc critical negative infinite:7.994067665666313
