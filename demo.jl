@@ -41,3 +41,4 @@ println("K1:$(K1)\tK2:$(K2)")
 #print critical benefit-to-cost ratio
 println("bc_critical: $(K1/K2)")
 println("bc_critical: $((lambda1+lambda2+lambda3)/(lambda1-lambda2))")
+
