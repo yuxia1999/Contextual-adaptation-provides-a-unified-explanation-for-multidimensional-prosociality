@@ -59,6 +59,53 @@ After installation, Julia will be accessible through your command-line interface
 $ julia demo.jl
 ```
 
+# PSEUDOCODE FOR SIMULATION
+```
+## Inputs
+- A network `G` (nodes represent individuals, edges represent potential interactions)
+- For each individual `i`, a partition of its neighbors into groups:  
+  `groups[i] = [G_i¹, G_i², ..., G_i^{m_i}]`
+- Strategy set `S = {1, 2, ..., K}`
+- Payoff matrix `P ∈ ℝ^{K×K}`, where `P[s, s′]` is the payoff to an individual using strategy `s` against a neighbor using `s′`
+- Selection strength `δ ≥ 0`
+- Mutation (exploration) rate `μ ∈ [0, 1]`
+- Total number of update steps `T`
+
+## Initialization
+For each individual `i`:  
+ For each group `g` in `groups[i]`:  
+  `strategy[i][g] ←` uniformly random strategy from `S`
+
+## Simulation Loop
+For `t = 1` to `T`:
+1. **Select an update target**:  
+ Choose an individual `i` uniformly at random.  
+ If `groups[i]` is non-empty, choose a group index `g` uniformly at random from `groups[i]`.
+
+2. **Gather candidate strategies for imitation**:  
+ Initialize an empty list `candidates`.  
+ For each neighbor `j` of `i`:
+  - Let `g_j` be the group in `groups[j]` that contains `i`.  
+  - Let `s_j→i = strategy[j][g_j]` (the strategy `j` uses toward `i`).  
+  - Compute `j`’s total payoff `u_j`:  
+    `u_j = Σ_{k ∈ N(j)} P[ strategy[j][g_{jk}], strategy[k][g_{kj}] ]`  
+    where `g_{jk}` is the group in `groups[j]` containing `k`,  
+    and `g_{kj}` is the group in `groups[k]` containing `j`.  
+  - Compute fitness: `f_j = exp(δ ⋅ u_j)`  
+  - Append `(s_j→i, f_j)` to `candidates`.
+
+3. **Update the selected strategy**:  
+ If `random() < μ`:  
+  `strategy[i][g] ←` random strategy from `S`  // exploration  
+ Else if `candidates` is non-empty:  
+  Select a strategy `s` from `candidates` with probability proportional to its associated `f_j`  
+  `strategy[i][g] ← s`  // imitation  
+ // Otherwise, retain the current strategy.
+
+## Output
+Compute the frequency of each strategy across all `(individual, group)` pairs over the simulation (or at the end), and report the distribution.
+```
+
 # Support
 For any question about this program, please contact <br>
 Yu Xia, Email: sjtuxy2019@sjtu.edu.cn
