@@ -14,6 +14,8 @@ This project is designed for the production of the paper titled Contextual adapt
 - `networkModification.jl` - Generates group partitions for given networks
 - `demo.jl` - An example
 
+**Note**: Input network nodes must be labeled consecutively starting from `0` when using this code for calculations.
+
 ## Visualization Resources
 - `Figure2/` - Data and code for Figure 2 
 - `Figure3/` - Data and code for Figure 3
