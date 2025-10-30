@@ -34,6 +34,33 @@ All data are provided as ZIP archives. **Please unzip the corresponding data arc
 ## Empirical Data
 - `EmpiricalNetwork_edgelist/` - Edge lists of four empirical social networks analyzed in the study
 
+# SYSTEM REQUIREMENTS
+## Operating Systems
+
+- **Tested on:** Windows 11 
+- **Hardware:** Standard desktop computer (e.g., Intel i7, 16GB RAM)  
+
+## Software Dependencies
+- **Required Python Packages:**
+```
+json
+matplotlib
+numpy
+```
+
+- **Required Julia Packages**
+```
+ArgParse
+DataFrames
+Distributions
+IterativeSolvers
+LinearAlgebra
+Printf
+Random
+SparseArrays
+StatsBase
+```
+
 # INSTALLATION
 
 ## Julia Installation
@@ -58,6 +85,14 @@ After installation, Julia will be accessible through your command-line interface
 ```console
 $ julia demo.jl
 ```
+
+### Expected Output
+
+The structure-coefficients lambda1, lambda2, lambda3, K1 and K2 of the network will be printed.
+  
+### Runtime for Demo
+
+~20 seconds on a standard desktop computer.
 
 # PSEUDOCODE FOR SIMULATION
 ```
@@ -106,6 +141,6 @@ For `t = 1` to `T`:
 Compute the frequency of each strategy across all `(individual, group)` pairs over the simulation (or at the end), and report the distribution.
 ```
 
-# Support
+# SUPPORT
 For any question about this program, please contact <br>
 Yu Xia, Email: sjtuxy2019@sjtu.edu.cn
