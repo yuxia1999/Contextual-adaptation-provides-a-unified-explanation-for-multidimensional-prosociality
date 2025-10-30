@@ -12,6 +12,7 @@ This project is designed for the production of the paper titled Contextual adapt
 ## Core Analysis Scripts
 - `frequencyPrediction.jl` - Computes structure-coefficients for given networks
 - `networkModification.jl` - Generates group partitions for given networks
+- `frequencySimulation.jl` - Monte Carlo simulation for strategy frequency of given networks
 - `demo.jl` - An example
 
 **Note**: Input network nodes must be labeled consecutively starting from `0` when using this code for calculations.
