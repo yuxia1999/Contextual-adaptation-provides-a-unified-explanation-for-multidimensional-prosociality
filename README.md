@@ -12,7 +12,7 @@ This project is designed for the production of the paper titled Contextual adapt
 ## Core Analysis Scripts
 - `frequencyPrediction.jl` - Computes structure-coefficients for given networks
 - `networkModification.jl` - Generates group partitions for given networks
-- `frequencySimulation.jl` - Monte Carlo simulation for strategy frequency of given networks
+- `frequencySimulation.jl` - Monte Carlo simulation of strategy frequencies in given networks.
 - `demo.jl` - An example
 
 **Note**: Input network nodes must be labeled consecutively starting from `0` when using this code for calculations.
@@ -36,6 +36,9 @@ All data are provided as ZIP archives. **Please unzip the corresponding data arc
 
 ## Empirical Data
 - `EmpiricalNetwork_edgelist/` - Edge lists of four empirical social networks analyzed in the study
+
+## Synthetic Data
+- `SF_50_degree4_1.txt` – Edge list of a scale-free network with 50 nodes and an average degree of 4
 
 # SYSTEM REQUIREMENTS
 ## Operating Systems
