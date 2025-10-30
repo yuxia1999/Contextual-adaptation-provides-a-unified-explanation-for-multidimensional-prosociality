@@ -119,29 +119,29 @@ For each individual `i`:
 
 ## Simulation Loop
 For `t = 1` to `T`:
-1. **Select an update target**:  
- Choose an individual `i` uniformly at random.  
- If `groups[i]` is non-empty, choose a group index `g` uniformly at random from `groups[i]`.
-
-2. **Gather candidate strategies for imitation**:  
- Initialize an empty list `candidates`.  
- For each neighbor `j` of `i`:
-  - Let `g_j` be the group in `groups[j]` that contains `i`.  
-  - Let `s_j→i = strategy[j][g_j]` (the strategy `j` uses toward `i`).  
-  - Compute `j`’s total payoff `u_j`:  
-    `u_j = Σ_{k ∈ N(j)} P[ strategy[j][g_{jk}], strategy[k][g_{kj}] ]`  
-    where `g_{jk}` is the group in `groups[j]` containing `k`,  
-    and `g_{kj}` is the group in `groups[k]` containing `j`.  
-  - Compute fitness: `f_j = exp(δ ⋅ u_j)`  
-  - Append `(s_j→i, f_j)` to `candidates`.
-
-3. **Update the selected strategy**:  
- If `random() < μ`:  
-  `strategy[i][g] ←` random strategy from `S`  // exploration  
- Else if `candidates` is non-empty:  
-  Select a strategy `s` from `candidates` with probability proportional to its associated `f_j`  
-  `strategy[i][g] ← s`  // imitation  
- // Otherwise, retain the current strategy.
+  1. **Select an update target**:  
+   Choose an individual `i` uniformly at random.  
+   If `groups[i]` is non-empty, choose a group index `g` uniformly at random from `groups[i]`.
+  
+  2. **Gather candidate strategies for imitation**:  
+   Initialize an empty list `candidates`.  
+   For each neighbor `j` of `i`:
+    - Let `g_j` be the group in `groups[j]` that contains `i`.  
+    - Let `s_j→i = strategy[j][g_j]` (the strategy `j` uses toward `i`).  
+    - Compute `j`’s total payoff `u_j`:  
+      `u_j = Σ_{k ∈ N(j)} P[ strategy[j][g_{jk}], strategy[k][g_{kj}] ]`  
+      where `g_{jk}` is the group in `groups[j]` containing `k`,  
+      and `g_{kj}` is the group in `groups[k]` containing `j`.  
+    - Compute fitness: `f_j = exp(δ ⋅ u_j)`  
+    - Append `(s_j→i, f_j)` to `candidates`.
+  
+  3. **Update the selected strategy**:  
+   If `random() < μ`:  
+    `strategy[i][g] ←` random strategy from `S`  // exploration  
+   Else if `candidates` is non-empty:  
+    Select a strategy `s` from `candidates` with probability proportional to its associated `f_j`  
+    `strategy[i][g] ← s`  // imitation  
+   // Otherwise, retain the current strategy.
 
 ## Output
 Compute the frequency of each strategy across all `(individual, group)` pairs over the simulation (or at the end), and report the distribution.
